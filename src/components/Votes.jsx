@@ -4,7 +4,7 @@ import { CiEdit } from "react-icons/ci";
 import { AiOutlineDelete } from "react-icons/ai";
 import { BsArrowRepeat } from "react-icons/bs";
 import { IoMdAdd } from "react-icons/io";
-import { EditVote } from './Models';
+import { EditTask, EditVote } from './Models';
 
 
 
@@ -12,9 +12,13 @@ import { EditVote } from './Models';
 const Home = () => {
 
     const[voteEdit,setVoteEdit]=useState(false);
+    const[newVote,setNewVote]=useState(false);
 
     const hendleVoteEditClose=()=>{
         setVoteEdit(false);
+    }
+    const hendleNewVoteClose=()=>{
+        setNewVote(false);
     }
     return (
 
@@ -76,7 +80,7 @@ const Home = () => {
                 </div>
                 
 
-                <button className='w-[10rem] bottom-10 right-10 absolute flex justify-center gap-1 font-bold items-center bg-slate-800 text-white py-2 rounded-lg shadow-2xl'>New Poll  <IoMdAdd /></button>
+                <button onClick={()=>{setNewVote(true)}} className='w-[10rem] bottom-10 right-10 absolute flex justify-center gap-1 font-bold items-center bg-slate-800 text-white py-2 rounded-lg shadow-2xl'>New Poll  <IoMdAdd /></button>
 
 
 
@@ -86,6 +90,14 @@ const Home = () => {
             {voteEdit && <>
 
                 <EditVote mod={hendleVoteEditClose} />
+                <style>
+                    {`body{ overflow:hidden; }`}
+                </style>
+            </>
+            }
+            {newVote && <>
+
+                <EditTask  mod={hendleNewVoteClose} />
                 <style>
                     {`body{ overflow:hidden; }`}
                 </style>
